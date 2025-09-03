@@ -33,6 +33,16 @@ curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utili
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.dotfiles/.zsh/zsh-autosuggestions
 ```
 
+#### Node.js バージョン管理
+```bash
+# nvm (Node Version Manager)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+
+# シェル再起動後、最新LTSをインストール
+nvm install --lts
+nvm use --lts
+```
+
 #### npm グローバルパッケージ
 ```bash
 # AI CLI・文章校正ツール

@@ -9,10 +9,6 @@ setopt complete_aliases
 
 alias python='python3'
 
-# MacVim
-if [ -f /Applications/MacVim.app/Contents/MacOS/Vim ]; then
-  alias gvim="/Applications/MacVim.app/Contents/MacOS/Vim -g"
-fi
 
 
 alias cdr="powered_cd"
@@ -28,9 +24,6 @@ alias Pv='open -a "Preview"'
 alias Pv='open -a "Preview"'
 alias Pvpng='open -a "Preview" **/*.png'
 alias Pvpsd='open -a "Preview" **/*.psd'
-alias vihttpd='sudo mvim /etc/apache2/httpd.conf'
-alias vivhosts='sudo mvim /etc/apache2/extra/httpd-vhosts.conf'
-alias apachectl='sudo apachectl'
 alias tower='open -a Tower'
 alias c='clear'
 

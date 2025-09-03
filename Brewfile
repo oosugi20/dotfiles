@@ -10,6 +10,11 @@ brew "wget"            # ダウンロードツール
 brew "vim"                    # メインエディタ
 brew "ripgrep"               # 高速検索 (.vim設定で使用)
 brew "the_silver_searcher"   # 高速検索 (.vim設定で使用)
+brew "fzf"                   # ファジーファインダー (.zsh/.vim設定で使用)
+
+# === シェルユーティリティ ===
+brew "coreutils"             # GNU版コマンド (gtac等)
+brew "expect"                # unbuffer (.zsh設定で使用)
 
 # === シェル・ターミナル ===
 brew "tmux"            # ターミナルマルチプレクサ
