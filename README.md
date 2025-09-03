@@ -33,6 +33,12 @@ curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utili
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.dotfiles/.zsh/zsh-autosuggestions
 ```
 
+#### npm グローバルパッケージ
+```bash
+# AI CLI・文章校正ツール
+npm install -g @anthropic-ai/claude-code @google/gemini-cli textlint textlint-rule-preset-ja-technical-writing
+```
+
 #### Vimプラグイン
 ```bash
 # Vundleは既にsubmoduleとして管理済み
