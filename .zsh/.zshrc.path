@@ -1,0 +1,74 @@
+# =================================================================
+# PATH
+
+# brew
+export PATH=/opt/homebrew/sbin:$PATH
+export PATH=/opt/homebrew/bin:$PATH
+
+# gcloud
+source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"        # gcloud 本体を PATH へ
+source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"  # gcloud 用の zsh 補完
+
+# nvm setup
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+
+# Automatically load the Node.js version specified in .nvmrc or .node-version
+autoload -U add-zsh-hook
+
+load-node-version() {
+  local version_file
+  if [[ -f .node-version ]]; then
+    version_file=".node-version"
+  elif [[ -f .nvmrc ]]; then
+    version_file=".nvmrc"
+  fi
+
+  if [[ -n $version_file ]]; then
+    local node_version
+    node_version=$(<"$version_file")
+    if [[ $(nvm version) != "v$node_version" ]]; then
+      nvm use "$node_version"
+    fi
+  elif [[ $(nvm version) != "$(nvm version default)" ]]; then
+    nvm use default
+  fi
+}
+
+add-zsh-hook chpwd load-node-version
+load-node-version
+
+# anyenv
+#export PATH=~/.anyenv/bin:$PATH
+#eval "$(anyenv init -)"
+#
+## rbenv
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#eval "$(rbenv init -)"
+
+#export PATH="$HOME/.anyenv/envs/nodenv/shims:$PATH"
+#
+#if [ -f ~/.anyenv-rc.sh ]; then
+#  source ~/.anyenv-rc.sh
+#fi
+
+
+# pyenv
+#export PYENV_ROOT="$HOME/.anyenv/envs/pyenv"
+#export PATH="$PYENV_ROOT/bin:$PATH"
+#export PATH=$PYENV_ROOT/shims:$PATH
+#eval "$(pyenv init --path)"
+#if command -v pyenv 1>/dev/null 2>&1; then
+#  eval "$(pyenv init -)"
+#fi
+
+## MacVim (mvim)
+#export PATH=/Applications/MacVim.app/Contents/MacOS:$PATH
+
+# npmモジュールのコマンドにパスを通す
+#export PATH=/usr/local/share/npm/bin:$PATH
+#export NODE_PATH=`npm root -g`
+
+
+#if [ -f '/Users/oosugi20/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/oosugi20/google-cloud-sdk/completion.zsh.inc'; fi

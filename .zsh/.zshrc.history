@@ -1,0 +1,28 @@
+# =================================================================
+# 履歴
+# http://webtech-walker.com/archive/2008/12/15101251.html
+
+# 履歴を保存するファイル
+HISTFILE=$HOME/.dotfiles/.zsh/.zsh_history
+
+# 履歴の件数
+HISTSIZE=500000
+SAVEHIST=500000
+
+# 重複した履歴を保存しない
+setopt hist_ignore_dups
+
+# 履歴を共有する
+setopt share_history
+
+# 先頭にスペースを入れると履歴に残さない
+setopt hist_ignore_space
+
+# 履歴の検索
+# 例えば"ls "とうってからC-pでlsから始まる履歴を検索可能。
+# 複数行のコマンドのときはカーソルキーで移動
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^P" history-beginning-search-backward-end
+bindkey "^N" history-beginning-search-forward-end

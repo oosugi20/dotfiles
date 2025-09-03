@@ -1,0 +1,2 @@
+# 全マウス機能をオフ（リサイズだけ残したいなら resize-pane のみ on）
+set -g mouse off

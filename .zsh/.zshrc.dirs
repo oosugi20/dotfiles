@@ -1,0 +1,42 @@
+# `cd -<Tab>` で履歴表示
+# -: 古いのが上
+# +: 新しいのが上
+setopt auto_pushd
+
+# 重複してpushしない
+setopt pushd_ignore_dups
+
+# 保存するディレクトリスタック数
+DIRSTACKSIZE=20
+
+## ディレクトリスタックの共有・保存
+## ディレクトリスタックをファイルに保存することで端末間で共有したり、
+## ログアウトしても残るようにする
+## http://sanrinsha.lolipop.jp/blog/2012/02/%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%82%92%E7%AB%AF%E6%9C%AB%E9%96%93%E3%81%A7%E5%85%B1%E6%9C%89%E3%81%97%E3%81%9F%E3%82%8A%E3%80%81%E4%BF%9D.html
+## cdする前に現在のディレクトリを保存
+#function share_dirs_preexec {
+#    pwd >> ~/.dotfiles/.zsh/.zshdirs
+#}
+## プロンプトが表示される前にディレクトリスタックを更新する
+#function share_dirs_precmd {
+#    if which tac 1>/dev/null 2>&1;then
+#        TAC=`which tac`
+#    else
+#        TAC='tail -r'
+#    fi
+#
+#    # 現在のディレクトリに戻ってこれるように書き込む
+#    pwd >> ~/.dotfiles/.zsh/.zshdirs
+#    # ファイルの書き込まれたディレクトリを移動することでディレクトリスタックを更新
+#    while read line
+#    do
+#        # ディレクトリが削除されていることもあるので調べる
+#        [ -d $line ] && cd $line
+#    done <~/.dotfiles/.zsh/.zshdirs
+#    # 削除されたディレクトリが取り除かれた新しいdirsを時間の昇順で書き込む
+#    dirs | tr " " "\n" | sed "s|~|${HOME}|" | eval ${TAC} > ~/.dotfiles/.zsh/.zshdirs
+#}
+## autoload -Uz add-zsh-hookが必要
+#autoload -Uz add-zsh-hook
+#add-zsh-hook preexec share_dirs_preexec
+#add-zsh-hook precmd  share_dirs_precmd

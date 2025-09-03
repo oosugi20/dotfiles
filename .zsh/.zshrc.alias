@@ -1,0 +1,75 @@
+# =================================================================
+# Alias
+
+# aliased ls needs if file/dir completions work
+setopt complete_aliases
+
+# pyenv等のconfigとhomebrewがぶつかるのを回避
+#alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew'
+
+alias python='python3'
+
+# MacVim
+if [ -f /Applications/MacVim.app/Contents/MacOS/Vim ]; then
+  alias gvim="/Applications/MacVim.app/Contents/MacOS/Vim -g"
+fi
+
+
+alias cdr="powered_cd"
+
+alias tmux='tmux -f $HOME/.dotfiles/.tmux/conf'
+
+#alias imgopt='((git diff --name-only --diff-filter=ACM && git ls-files --other --exclude-standard) | grep ".*[jpg|png|gif]$" | imageOptim -a -q) && growlnotify -t ImageOptime -m done. -a /Applications/ImageOptim.app'
+alias imgopt='((git diff HEAD --name-only --diff-filter=ACM && git ls-files --other --exclude-standard) | grep "\.*\(jpg\|png\|gif\)$" | imageOptim -q) && growlnotify -t ImageOptime -m done. -a /Applications/ImageOptim.app'
+alias shttp='python3 -m http.server'
+alias chrome='open -a "Google Chrome"'
+alias safari='open -a "Safari"'
+alias Pv='open -a "Preview"'
+alias Pv='open -a "Preview"'
+alias Pvpng='open -a "Preview" **/*.png'
+alias Pvpsd='open -a "Preview" **/*.psd'
+alias vihttpd='sudo mvim /etc/apache2/httpd.conf'
+alias vivhosts='sudo mvim /etc/apache2/extra/httpd-vhosts.conf'
+alias apachectl='sudo apachectl'
+alias tower='open -a Tower'
+alias c='clear'
+
+alias gs='git status'
+alias ga='git add'
+alias gaa='git add --all'
+alias gc='git commit'
+alias gcm='git commit -m'
+
+#alias android='/Applications/Android\ SDK/tools/android'
+#alias ios='open -a /Applications/Xcode.app/Contents/Applications/iPhone\ Simulator.app'
+
+#alias -s txt=mvim
+#alias -s md=mvim
+#alias -s html=mvim
+#alias -s js=mvim
+#alias -s coffee=mvim
+#alias -s css=mvim
+#alias -s sass=mvim
+#alias -s scss=mvim
+#alias -s json=mvim
+#alias -s rb=mvim
+alias -s png=Pv
+alias -s jpg=Pv
+alias -s psd=Pv
+alias -s gif=Pv
+
+
+alias showdesctop='defaults write com.apple.finder CreateDesktop -boolean true | killall Finder'
+alias hidedesctop='defaults write com.apple.finder CreateDesktop -boolean false | killall Finder'
+
+
+case "${OSTYPE}" in
+freebsd*|darwin*)
+  alias ls="ls -GFa"
+  ;;
+linux*)
+  alias ls="ls -Fa --color"
+  ;;
+esac
+
+alias ll='ls -l'

@@ -1,0 +1,59 @@
+# プロンプト
+autoload colors
+colors
+
+
+
+# starship
+#eval "$(starship init zsh)"
+
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git svn
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "+"
+zstyle ':vcs_info:git:*' unstagedstr "*"
+zstyle ':vcs_info:*' formats ' %{${fg[red]}%}  %b%{${fg[cyan]}%}%c%u%{${fg[red]}%}%m %{$reset_color%}'
+zstyle ':vcs_info:git+set-message:*' hooks git-st
+
++vi-git-st() {
+    local ahead behind
+    local -a gitstatus
+
+    # Check if we have a remote tracking branch
+    if git rev-parse --abbrev-ref @{upstream} >/dev/null 2>&1; then
+        # Count commits ahead/behind
+        ahead=$(git rev-list --count @{upstream}..HEAD 2>/dev/null)
+        behind=$(git rev-list --count HEAD..@{upstream} 2>/dev/null)
+        
+        gitstatus=()
+        
+        if [[ $ahead -gt 0 ]]; then
+            gitstatus+=("⬆ ${ahead}")
+        fi
+        
+        if [[ $behind -gt 0 ]]; then
+            gitstatus+=("⬇ ${behind}")
+        fi
+        
+        if [[ ${#gitstatus[@]} -gt 0 ]]; then
+            hook_com[misc]+=" %{${fg[magenta]}%}${(j::)gitstatus}%{${fg[red]}%}"
+        fi
+    fi
+}
+
+setopt prompt_subst
+precmd () {
+  LANG=en_US.UTF-8 vcs_info
+  if [ -z "${SSH_CONNECTION}" ]; then
+    PROMPT="
+ %{${fg[yellow]}%}%~%{${reset_color}%} ${vcs_info_msg_0_}
+%{${fg[blue]}%}%\➤%{${reset_color}%} "
+#[%n]$ "
+  else
+    PROMPT="
+ %{${fg[yellow]}%}%~%{${reset_color}%} ${vcs_info_msg_0_}
+%{${fg[green]}%}[%n@%m]$%{${reset_color}%} "
+  fi
+}
+
+PROMPT2='[%n]> '

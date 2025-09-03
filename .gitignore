@@ -1,0 +1,21 @@
+.DS_Store
+
+.vim/bundle/*
+!.vim/bundle/Vundle.vim/
+.vim/undo/
+.netrwhist
+
+.zshdirs
+.zcompdump
+.zsh_history
+.zsh_sessions/
+
+# zsh plugins
+.zsh/zsh-autosuggestions/
+
+# cache files
+.zsh/.zcompcache/
+
+# iTerm2 integration (can be reinstalled)
+.zsh/.iterm2_shell_integration.zsh
+.zsh/.iterm2/
