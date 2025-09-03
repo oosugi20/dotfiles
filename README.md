@@ -12,6 +12,12 @@ git clone --recursive <your-repo-url> ~/.dotfiles
 
 ### 2. 必要なツールのインストール
 
+#### Homebrew パッケージ
+```bash
+# Brewfileから必須パッケージを一括インストール
+brew bundle install --file=~/.dotfiles/Brewfile
+```
+
 #### iTerm2シェル統合
 ```bash
 # シェル統合スクリプト
