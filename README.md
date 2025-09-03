@@ -67,4 +67,13 @@ chsh -s $(which zsh)
 - **`.tmux/`**: tmux設定ファイル
 - **`CLAUDE.md`**: プロジェクト固有の情報とルール
 
+## 関連リポジトリ
+
+- **[dev-tools](https://github.com/oosugi20/dev-tools)**: 開発用ユーティリティスクリプト集
+  - Git文字コード変換ツール
+  - GitHub Issues管理スクリプト
+  - その他の開発補助ツール
+
+## 詳細情報
+
 詳細については各ディレクトリのREADME.mdを参照してください。
